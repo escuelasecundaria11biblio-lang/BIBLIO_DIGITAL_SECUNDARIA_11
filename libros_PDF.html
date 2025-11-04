@@ -1,0 +1,180 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Biblioteca Digital - Libros PDF</title>
+  <style>
+    body {
+      margin: 0;
+      font-family: Arial, sans-serif;
+      background: #ffffff;
+      margin-top: 70px;
+      color: #222;
+      padding: 12px;
+    }
+
+    .navbar {
+
+      width: 100%;
+      background-color: #0e0955;
+      color: white;
+      padding: 15px 0;
+      text-align: center;
+      position: fixed;
+      top: 0;
+      left: 0;
+      height: 7%;
+      z-index: 1000;
+    }
+
+    h1 {
+      text-align: center;
+      margin-bottom: 20px;
+      font-size: 24px;
+    }
+
+    .grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(140px, 1fr));
+      gap: 12px;
+      margin-top: 150px
+    }
+
+    .container {
+            margin-top: 6%;
+            margin-left: 26%;
+    }
+    .card {
+      border-radius: 10px;
+      padding: 16px;
+      min-height: 100px;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      text-align: center;
+      color: #fff;
+      text-decoration: none;
+      transition: transform 0.2s ease, box-shadow 0.2s ease;
+      font-size: 16px;
+    }
+
+    .card:hover {
+      transform: translateY(-3px);
+      box-shadow: 0 4px 10px rgba(0,0,0,0.15);
+    }
+
+    /* Colores planos */
+    .arte { background: #e57373; }
+    .biologia { background: #81c784; }
+    .ciencias { background: #64b5f6; }
+    .cuentos { background: #7986cb; }
+    .edfisica { background: #4db6ac; }
+    .filosofia { background: #9575cd; }
+    .fisica { background: #f06292; }
+    .geografia { background: #ffb74d; }
+    .historia { background: #ffa726; }
+    .ingles { background: #64b5f6; }
+    .matematica { background: #ff8a65; }
+    .mitos { background: #ba68c8; }
+    .musica { background: #ffd54f; color: #ffffff; }
+    .novelas { background: #4dd0e1; color: #ffffff; }
+    .poesia { background: #aed581; color: #ffffff; }
+    .quimica { background: #f48fb1; }
+    .tecnologia { background: #90a4ae; }
+
+    /* Responsive general */
+    @media (max-width: 768px) {
+      h1 {
+        font-size: 20px;
+        margin-bottom: 16px;
+      }
+      .card {
+        font-size: 14px;
+        padding: 12px;
+      }
+      
+    }
+
+    /* Responsive móviles - 2 columnas */
+    @media (max-width: 480px) {
+      .grid {
+        grid-template-columns: repeat(2, 1fr); /* 2 columnas en móviles */
+        gap: 10px;
+        margin-top: 50px;
+      }
+
+      .card {
+        font-size: 23px;
+        padding: 10px;
+        min-height: 80px;
+      }
+      .navbar {
+        padding: 8px 0;
+        height: auto;
+      }
+      body {
+        margin-top: 60px;
+        padding: 8px;
+      }
+
+   
+    }
+
+    .navbar-text {
+      display: none; /* por defecto no se ve en escritorio */
+      font-size: 20px;
+      font-weight: bold;
+      color: white;
+    }
+
+    /* Media query para pantallas móviles */
+    @media (max-width: 768px) {
+      .navbar img {
+        display: none; /* oculta la imagen */
+      }
+      .navbar-text {
+        display: inline; /* muestra el texto en lugar de la imagen */
+      }
+
+      .container{
+        margin-top: 220px;
+      }
+    }
+  </style>
+</head>
+<body>
+  <div class="navbar">
+    <span class="navbar-text">E.E.S N°11</span>
+  </div>
+
+  <img src="imagenes/escudo_11.png" alt="escudo_11" style="width: 12%; height: 20%; margin-left: 80%; margin-top: -10px;" />
+   <div class="container">
+        <h1 style="font-size: 30px; color: #000;  margin-top: -270px; margin-left: -310px;">Libros PDF</h1>
+    </div>
+
+
+  <section class="grid">
+    <!-- Asignaturas -->
+    <a href="libros_arte.html" class="card arte">Arte</a>
+    <a href="libros_biologia.html" class="card biologia">Biología</a>
+    <a href="libros_ciencias_naturales.html" class="card ciencias">Ciencias Sociales</a>
+    <a href="libros_edfisica.html" class="card edfisica">Ed. Física</a>
+    <a href="libros_filosofia.html" class="card filosofia">Filosofía</a>
+    <a href="libros_fisica.html" class="card fisica">Física</a>
+    <a href="libros_geografia.html" class="card geografia">Geografía</a>
+    <a href="libros_historia.html" class="card historia">Historia</a>
+    <a href="libros_ingles.html" class="card ingles">Inglés</a>
+    <a href="libros_matematica.html" class="card matematica">Matemática</a>
+    <a href="libros_quimica.html" class="card quimica">Química</a>
+    <a href="libros_tecnologia.html" class="card tecnologia">Tecnología</a>
+
+    <!-- Géneros literarios -->
+    <a href="libros_cuentos.html" class="card cuentos">Cuentos</a>
+    <a href="libros_mitos.html" class="card mitos">Mitos y Leyendas</a>
+    <a href="libros_musica.html" class="card musica">Música</a>
+    <a href="libros_novelas.html" class="card novelas">Novelas</a>
+    <a href="libros_poesia.html" class="card poesia">Poemas / Poesía</a>
+  </section>
+</body>
+</html>

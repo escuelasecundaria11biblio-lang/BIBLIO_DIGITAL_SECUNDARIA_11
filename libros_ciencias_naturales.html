@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Libros de Cs. Naturales</title>
+  <style>
+    body {
+      font-family: Arial, Helvetica, sans-serif;
+      margin: 20px;
+      background: #f2f2f2;
+      color: #222;
+    }
+    h1 {
+      text-align: center;
+      color: #d84315;
+    }
+    #contenedor {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
+      gap: 15px;
+      margin-top: 20px;
+    }
+    .pdf-card {
+      background: #fff;
+      border-radius: 10px;
+      box-shadow: 0 2px 6px rgba(0,0,0,0.1);
+      width: 200px;
+      padding: 10px;
+      text-align: center;
+      cursor: pointer;
+      transition: transform 0.2s;
+    }
+    .pdf-card:hover {
+      transform: scale(1.05);
+    }
+    .pdf-card img {
+      width: 100%;
+      height: 280px;
+      object-fit: cover;
+      border-radius: 6px;
+    }
+    .pdf-card h3 {
+      margin: 8px 0 0 0;
+      font-size: 14px;
+      color: #d84315;
+    }
+  </style>
+</head>
+<body>
+ 
+  <div id="contenedor">Cargando libros...</div>
+
+  <script>
+    const API_KEY = "AIzaSyCuu-l5kFTTjVWsh7ZucKclFKTWA6gI96Q";
+    const FOLDER_ID = "1pS99ECJAm2NjohdwXu1JLPfVtH6JQ_At";
+
+    const url = `https://www.googleapis.com/drive/v3/files?q='${FOLDER_ID}'+in+parents+and+mimeType='application/pdf'&fields=files(id,name,webViewLink,thumbnailLink)&key=${API_KEY}`;
+
+    fetch(url)
+      .then(res => res.json())
+      .then(data => {
+        const contenedor = document.getElementById("contenedor");
+        contenedor.innerHTML = "";
+
+        if (!data.files || data.files.length === 0) {
+          contenedor.innerHTML = "<p>No se encontraron archivos PDF en esta carpeta.</p>";
+          return;
+        }
+
+        data.files.forEach(file => {
+          const card = document.createElement("div");
+          card.className = "pdf-card";
+          card.innerHTML = `
+            <img src="${file.thumbnailLink || 'https://via.placeholder.com/200x280?text=Sin+Vista+Previa'}" alt="${file.name}">
+            <h3>${file.name}</h3>
+          `;
+          card.onclick = () => {
+            window.open(`https://drive.google.com/file/d/${file.id}/view`, '_blank');
+          };
+          contenedor.appendChild(card);
+        });
+      })
+      .catch(err => {
+        console.error(err);
+        document.getElementById("contenedor").innerHTML = "Error al cargar los archivos.";
+      });
+  </script>
+</body>
+</html>
